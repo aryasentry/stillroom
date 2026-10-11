@@ -381,7 +381,7 @@ def validate_reconstruction_provenance(value,assets):
         source=assets.get(aid) if isinstance(aid,str) else None
         require(source is not None and source.role=='capture' and source.kind=='image' and source.sha256==digest and aid not in seen,'Reconstruction source identity/hash mismatch')
         sources.append({'assetId':aid,'sha256':digest});seen.add(aid)
-    require(value.get('quality') in ('preview','standard'),'Invalid reconstruction quality')
+    require(value.get('quality') in ('preview','standard','assisted'),'Invalid reconstruction quality')
     versions=value.get('versions',{});require(isinstance(versions,dict),'Invalid reconstruction engine versions')
     safe_versions={}
     for engine in ('pycolmap','brush'):
@@ -401,6 +401,12 @@ def validate_reconstruction_provenance(value,assets):
     if 'guidedMatching' in settings:
         require(type(settings['guidedMatching']) is bool,'Invalid reconstruction guided matching setting')
         safe_settings['guidedMatching']=settings['guidedMatching']
+    if value.get('quality')=='assisted':
+        require(len(images)<=32,'Assisted reconstruction supports at most 32 source photos')
+        from .depth_runtime import MODEL_ID, MODEL_REVISION, MODEL_SHA256, SOURCE_REVISION
+        for key,expected in {'cameraModel':MODEL_ID,'modelRevision':MODEL_REVISION,'modelSha256':MODEL_SHA256,'modelSourceRevision':SOURCE_REVISION,'modelInputResolution':336,'modelInputFrames':len(images)}.items():
+            require(settings.get(key)==expected,'Invalid assisted model provenance')
+            safe_settings[key]=expected
     registered=value.get('registeredAssetIds',[])
     require(isinstance(registered,list) and len(registered)<=len(images) and all(isinstance(i,str) and i in seen for i in registered) and len(set(registered))==len(registered),'Invalid registered source identities')
     warnings=value.get('warnings',[])

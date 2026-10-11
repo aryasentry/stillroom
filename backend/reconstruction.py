@@ -142,6 +142,10 @@ class ReconstructionManager:
             if self.closed:raise HTTPException(503,'Reconstruction service is shutting down')
             current=runtime_status()
             if not current['available']:raise HTTPException(503,'Install the local reconstruction runtime before starting a capture.')
+            if quality == 'assisted':
+                from .depth_runtime import runtime_status as depth_status
+                if not depth_status()['available']:raise HTTPException(503,'Prepare the sparse-frame model first.')
+                if len(image_ids)>32:raise HTTPException(422,'Assisted reconstruction supports at most 32 photos.')
             if not 3<=len(image_ids)<=200 or len(set(image_ids))!=len(image_ids):raise HTTPException(422,'Choose 3–200 unique capture photos')
             with self.store.connect() as db:
                 db.execute('BEGIN IMMEDIATE');project=self.store.get(pid,db)
@@ -320,7 +324,7 @@ class ReconstructionManager:
 class StartBody(BaseModel):
     model_config=ConfigDict(extra='forbid')
     imageIds:list[str]=Field(min_length=3,max_length=200)
-    quality:Literal['preview','standard']
+    quality:Literal['preview','standard','assisted']
 
 class AcceptBody(BaseModel):
     model_config=ConfigDict(extra='forbid')
@@ -337,6 +341,15 @@ def install_reconstruction(app,store):
         finally:
             video.close();manager.close()
     app.router.lifespan_context=lifespan
+    @app.get('/api/reconstruction/assisted-runtime')
+    def assisted_runtime():
+        from .depth_runtime import runtime_status
+        return runtime_status()
+    @app.post('/api/reconstruction/assisted-runtime/install')
+    def assisted_install():
+        from .depth_runtime import begin_install
+        return begin_install()
+
     @app.get('/api/reconstruction/runtime')
     def runtime():return status()
     @app.post('/api/reconstruction/runtime/install')

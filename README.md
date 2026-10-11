@@ -135,3 +135,13 @@ The latest checks passed **232 backend tests, 37 frontend unit tests and 17 ordi
 The React/TypeScript viewer uses Three.js and Spark; the Python/FastAPI backend owns validation, SQLite and files. Production scripts, styles, fonts and splat runtime resources are bundled locally. Browser acceptance tests block non-loopback HTTP(S) requests from the app; this is not an OS firewall test and does not inspect unrelated browser background traffic.
 
 See [verification evidence and limits](docs/ACCURACY_REPORT.md), [coordinate contract](docs/COORDINATES.md), [implementation contract](docs/DESIGN.md) and [fixture provenance](fixtures/README.md). Photo capture guidance, local reconstruction jobs, isolated preview and explicit acceptance are implemented and a synthetic native reconstruction was visually inspected. Private real-room recordings have also been inspected; dimensional accuracy still requires independent measurements. Local video-to-frames reconstruction is implemented. Generated missing geometry and guided tours are not implemented.
+
+### Experimental sparse-frame reconstruction
+
+Choose **Sparse · estimated cameras (experimental)** under Reconstruction quality, then **Prepare sparse-frame model** once. This downloads [Depth Anything 3 Base](https://huggingface.co/depth-anything/DA3-BASE) (517 MiB) and its separate PyTorch environment. Standard remains the default and does not need this model. Optional command-line setup, from the repository root: `.venv/bin/python -m scripts.setup_depth` (Windows: `.venv\Scripts\python.exe -m scripts.setup_depth`).
+
+Sparse mode processes at most **32 originals**, spread through the capture; frames from one video favor sharper images within each interval. Every original remains saved. The model initializes camera poses, verified feature matches triangulate points, and bundle adjustment refines the cameras before normal Gaussian training. Views with fewer than 30 supported observations and points above 4-pixel reprojection error are excluded. The matched-view percentage refers only to the selected inputs.
+
+Source and model versions are fixed and SHA-256 checked. Inference runs locally (Apple Metal, CUDA when available, otherwise CPU). Native verification so far covers Apple silicon macOS; the optional runtime has not been executed on Windows or Linux. See the [accuracy report](docs/ACCURACY_REPORT.md) for measured evidence and limits.
+
+This is **camera assistance, not unseen-world generation**. It can help small capture sets, but it cannot make arbitrary blurry footage faithful, restore a moving person's true face, or establish the shape of an unseen wall. Generated completion is not silently mixed into the captured room.

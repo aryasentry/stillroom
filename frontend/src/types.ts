@@ -54,14 +54,14 @@ export type ReconstructionStatus = 'queued' | 'running' | 'needs_photos' | 'read
 export interface ReconstructionJob {
   id: string; projectId: string; status: ReconstructionStatus;
   stage: 'preparing' | 'matching' | 'training' | 'validating' | 'complete'; message: string;
-  createdAt: string; updatedAt: string; quality: 'preview' | 'standard'; sourceAssetIds: string[];
+  createdAt: string; updatedAt: string; quality: 'preview' | 'standard' | 'assisted'; sourceAssetIds: string[];
   totalPhotos: number; registeredPhotos: number; unregisteredAssetIds: string[]; components: number[];
   resultAssetId: string | null; warnings: string[]; error: string | null;
   iteration: number | null; totalIterations: number | null;
 }
 export interface ReconstructionRuntime {
   available: boolean; installing: boolean; supported: boolean; platform: string;
-  message: string; error: string | null; versions: {pycolmap: string | null; brush: string | null};
+  message: string; error: string | null; versions: {pycolmap?: string | null; brush?: string | null; model?:string; revision?:string};
 }
 
 export interface VideoExtractionJob {

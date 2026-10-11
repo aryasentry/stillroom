@@ -22,6 +22,7 @@ from .splat_cleanup import clean_splats, scene_envelope
 
 PROFILES = {
     'preview': {'totalSteps': 3000, 'maxResolution': 960, 'maxSplats': 300000, 'exportEvery': 1000},
+    'assisted': {'totalSteps': 7000, 'maxResolution': 1280, 'maxSplats': 750000, 'exportEvery': 1000},
     'standard': {'totalSteps': 7000, 'maxResolution': 1280, 'maxSplats': 750000, 'exportEvery': 1000},
 }
 _PROTOCOL = None
@@ -39,9 +40,10 @@ def emit(**event):
 
 
 def validate_inputs(spec: dict) -> list[dict]:
-    if spec.get('quality') not in PROFILES: raise ValueError('Choose preview or standard reconstruction quality.')
+    if spec.get('quality') not in PROFILES: raise ValueError('Choose preview, standard or assisted reconstruction quality.')
     images = spec.get('images')
     if not isinstance(images, list) or not 3 <= len(images) <= 200: raise ValueError('Choose 3–200 overlapping photographs of one room.')
+    if spec['quality']=='assisted' and len(images)>32: raise ValueError('Assisted reconstruction supports at most 32 photos.')
     root = Path(spec['assetRoot']).resolve(strict=True)
     seen = set(); total = 0; validated = []
     for item in images:
@@ -300,11 +302,17 @@ def reconstruct(job: Path):
     if not runtime_status()['available']: raise RuntimeError('Install the local reconstruction runtime before starting a job.')
     ids = [item['id'] for item in images]
     warnings = normalize_images(images, job / 'images')
+    prediction = None
+    if spec['quality']=='assisted':
+        from .depth_runtime import predict
+        emit(stage='matching', message='Estimating initial cameras with the local sparse-frame model.')
+        prediction = predict([job/'images'/(identifier+'.jpg') for identifier in ids],job/'camera_prediction.npz')
+        warnings.append('Experimental estimated cameras refined with image features. Unseen surfaces and moving people may remain incomplete or smeared.')
     emit(stage='matching', message='Finding shared features and camera positions on the CPU.', warnings=warnings)
     threads = min(8, max(1, (os.cpu_count() or 2) - 1))
     extraction = colmap.FeatureExtractionOptions(); extraction.use_gpu = False; extraction.num_threads = threads; extraction.max_image_size = 1600
     matching = colmap.FeatureMatchingOptions(); matching.use_gpu = False; matching.num_threads = threads
-    matching.guided_matching = spec['quality'] == 'standard'
+    matching.guided_matching = spec['quality'] in ('standard','assisted')
     reader = colmap.ImageReaderOptions(); reader.camera_model = 'SIMPLE_RADIAL'
     mapping = colmap.IncrementalPipelineOptions(); mapping.num_threads = threads; mapping.min_model_size = 3; mapping.multiple_models = True; mapping.ba_use_gpu = False; mapping.random_seed = 0
     database = job / 'database.db'; sparse = job / 'sparse'
@@ -315,7 +323,11 @@ def reconstruct(job: Path):
         emit(stage='matching', message='Matching overlapping views on the CPU.', warnings=warnings)
         colmap.match_exhaustive(database, matching_options=matching, device=colmap.Device.cpu)
         emit(stage='matching', message='Estimating connected camera groups and triangulated points.', warnings=warnings)
-        models = colmap.incremental_mapping(database, job / 'images', sparse, options=mapping)
+        if prediction is None:
+            models = colmap.incremental_mapping(database, job / 'images', sparse, options=mapping)
+        else:
+            from .assisted_reconstruction import recover
+            models = recover(database, job/'images', sparse, ids, prediction, threads)
     selected, details = select_component(models, ids)
     details['warnings'] = (warnings + details['warnings'])[:12]
     if selected is None:
@@ -330,6 +342,9 @@ def reconstruct(job: Path):
         colmap.undistort_images(dataset, selected_dir, job / 'images', image_names=[image.name for image in model.images.values()], num_threads=threads)
     settings = {**PROFILES[spec['quality']], 'lpipsLossWeight': 0, 'normalizedMaxResolution': 1600,
                 'cameraCalibration': calibration, 'mappingRandomSeed': 0, 'guidedMatching': matching.guided_matching}
+    if prediction is not None:
+        from .depth_runtime import MODEL_ID, MODEL_REVISION, MODEL_SHA256, SOURCE_REVISION
+        settings.update(cameraModel=MODEL_ID, modelRevision=MODEL_REVISION, modelSha256=MODEL_SHA256, modelSourceRevision=SOURCE_REVISION, modelInputResolution=336, modelInputFrames=len(ids))
     emit(stage='training', message='Training the room locally from solved cameras and undistorted photos.', iteration=0, totalIterations=settings['totalSteps'], **details)
     output = job / 'exports'
     train(dataset, output, settings, job / 'brush.log')

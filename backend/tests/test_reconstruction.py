@@ -474,3 +474,17 @@ def test_archive_rejects_invalid_reconstruction_camera_metadata(client,monkeypat
             target.writestr(name,data)
     response=client.post('/api/import',files={'file':('invalid-camera.zip',changed.getvalue())})
     assert response.status_code==422
+
+
+def test_assisted_runtime_is_explicit_and_bounded(client,monkeypatch):
+    import backend.reconstruction as reconstruction
+    from backend import depth_runtime
+    monkeypatch.setattr(reconstruction,'runtime_status',lambda:{'available':True,'versions':{}})
+    monkeypatch.setattr(depth_runtime,'runtime_status',lambda:{'available':False,'installing':False,'supported':True})
+    assert client.get('/api/reconstruction/assisted-runtime').status_code==200
+    p=new(client);ids=[capture(client,p,n).json()['id'] for n in range(3)]
+    r=client.post(f"/api/projects/{p['id']}/reconstructions",json={'imageIds':ids,'quality':'assisted'})
+    assert r.status_code==503 and 'sparse' in r.text.lower()
+    monkeypatch.setattr(depth_runtime,'runtime_status',lambda:{'available':True})
+    r=client.post(f"/api/projects/{p['id']}/reconstructions",json={'imageIds':[str(i) for i in range(33)],'quality':'assisted'})
+    assert r.status_code==422 and '32' in r.text

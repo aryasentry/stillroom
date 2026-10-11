@@ -77,3 +77,16 @@ export function reconstructionSourceVideos(project:Project,job:ReconstructionJob
   const ids=new Set(reconstructionCaptureViews(project,job).map(({asset})=>(asset.metadata?.videoFrame as {sourceAssetId?:string}|undefined)?.sourceAssetId));
   return project.assets.filter(a=>a.role==='media'&&a.kind==='video'&&ids.has(a.id));
 }
+
+/** At most 32 originals, spread across capture order; video bins favor sharpness. */
+export function selectAssistedPhotos(photos:Asset[]):Asset[]{
+  if(photos.length<=32)return [...photos];
+  const frame=(a:Asset)=>a.metadata?.videoFrame as {sourceAssetId?:string;timestampSeconds?:number;sharpness?:number}|undefined;
+  const source=frame(photos[0])?.sourceAssetId;
+  const sameVideo=!!source&&photos.every(a=>frame(a)?.sourceAssetId===source&&Number.isFinite(frame(a)?.timestampSeconds));
+  const ordered=sameVideo?[...photos].sort((a,b)=>frame(a)!.timestampSeconds!-frame(b)!.timestampSeconds!):[...photos];
+  return Array.from({length:32},(_,i)=>{
+    const bin=ordered.slice(Math.floor(i*ordered.length/32),Math.floor((i+1)*ordered.length/32));
+    return sameVideo?bin.reduce((best,a)=>(frame(a)?.sharpness??0)>(frame(best)?.sharpness??0)?a:best):bin[Math.floor(bin.length/2)];
+  });
+}

@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {captureAssets,checkPhotoSelection,checkVideoSelection,videoFrameLabel,makeReconstructionPreview,jobLabel,reconstructionCoverage,reconstructionCaptureViews,reconstructionSourceVideos} from './reconstructionModel';
+import {selectAssistedPhotos,captureAssets,checkPhotoSelection,checkVideoSelection,videoFrameLabel,makeReconstructionPreview,jobLabel,reconstructionCoverage,reconstructionCaptureViews,reconstructionSourceVideos} from './reconstructionModel';
 import type {Asset,Project,ReconstructionJob} from '../types';
 const photo=(id:string,size=100):Asset=>({id,role:'capture',kind:'image',size} as Asset);
 describe('photo collection and isolated reconstruction preview',()=>{
@@ -84,5 +84,19 @@ describe('honest reconstruction review',()=>{
     expect(reconstructionSourceVideos(project,attempt).map(a=>a.id)).toEqual(['original']);
     expect(reconstructionSourceVideos(project,{...attempt,status:'failed',registeredPhotos:0,unregisteredAssetIds:[]}).map(a=>a.id)).toEqual(['original']);
     expect(reconstructionSourceVideos(project,{status:'ready'} as ReconstructionJob)).toEqual([]);
+  });
+});
+
+describe('sparse input selection',()=>{
+  it('keeps a bounded, ordered set across the video and favors sharp frames locally',()=>{
+    const photos=Array.from({length:120},(_,i)=>({...photo(String(i)),metadata:{videoFrame:{sourceAssetId:'v',timestampSeconds:i,sharpness:i%4}}}));
+    const chosen=selectAssistedPhotos(photos);
+    expect(chosen).toHaveLength(32);expect(new Set(chosen.map(a=>a.id)).size).toBe(32);
+    expect(Number(chosen[0].id)).toBeLessThan(4);expect(Number(chosen.at(-1)!.id)).toBeGreaterThan(115);
+    expect(chosen.map(a=>Number(a.id))).toEqual(chosen.map(a=>Number(a.id)).sort((a,b)=>a-b));
+    expect(photos).toHaveLength(120);
+  });
+  it('keeps all small collections without replacing originals',()=>{
+    const photos=[photo('a'),photo('b'),photo('c')];expect(selectAssistedPhotos(photos)).toEqual(photos);
   });
 });

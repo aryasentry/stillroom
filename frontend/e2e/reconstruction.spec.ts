@@ -180,3 +180,33 @@ test('partial review exposes unmatched capture views and plays the retained orig
 
   expect(observed.external).toEqual([]);expect(observed.errors).toEqual([]);
 });
+
+test('experimental sparse mode requires its own model and sends selected originals',async({page})=>{
+  const observed=await blockExternal(page);
+  const runtime={available:false,installing:false,supported:true,platform:'test',message:'Optional download: 517 MiB model plus dependencies.',error:null,versions:{}};
+  await page.route('**/api/reconstruction/assisted-runtime',route=>route.fulfill({json:runtime}));
+  await page.route('**/api/reconstruction/runtime',route=>route.fulfill({json:{...runtime,available:true}}));
+  await page.route('**/api/reconstruction/assisted-runtime/install',async route=>{
+    runtime.available=true;await route.fulfill({json:runtime});
+  });
+  await begin(page,`Sparse controls ${Date.now()}`,captureNames.slice(0,3).map(n=>fixture(`capture-room/images/${n}`)));
+  await expect(page.getByLabel('Reconstruction quality',{exact:true})).toHaveValue('standard');
+  await page.getByLabel('Reconstruction quality',{exact:true}).selectOption('assisted');
+  await expect(page.getByRole('heading',{name:'Fewer frames, estimated cameras',exact:true})).toBeVisible();
+  const start=page.getByRole('button',{name:'Create a room from photos',exact:true});
+  await expect(start).toBeDisabled();
+  await page.getByRole('button',{name:'Prepare sparse-frame model',exact:true}).click();
+  await expect(start).toBeEnabled();
+  let sent:any=null;
+  await page.route('**/api/projects/*/reconstructions',async route=>{
+    if(route.request().method()!=='POST')return route.continue();
+    sent=route.request().postDataJSON();await route.fulfill({status:422,json:{detail:'Controlled test: native reconstruction is checked separately.'}});
+  });
+  await start.click();await expect(page.getByRole('alert')).toContainText('Controlled test');
+  expect(sent.quality).toBe('assisted');expect(sent.imageIds).toHaveLength(3);
+  await page.setViewportSize({width:390,height:844});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  expect(observed.external).toEqual([]);
+  // The deliberate HTTP 422 is expected; no uncaught page errors are permitted.
+  expect(observed.errors.filter(x=>!x.includes('422'))).toEqual([]);
+});
