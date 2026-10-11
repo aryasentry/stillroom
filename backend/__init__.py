@@ -1,0 +1,1 @@
+"""Stillroom local-only application."""

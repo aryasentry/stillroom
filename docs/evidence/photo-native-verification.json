@@ -1,0 +1,34 @@
+{
+  "synthetic": true,
+  "imageCount": 54,
+  "quality": "preview",
+  "elapsedSeconds": 588.69,
+  "exitCode": 0,
+  "networkDeniedByOS": true,
+  "fixture": "54 synthetic rendered room photographs, with geometry and generating camera poses withheld from the engine",
+  "registeredImages": 54,
+  "sparsePoints": 19634,
+  "splats": 31184,
+  "shDegree": 3,
+  "outputBytes": 7360974,
+  "outputSha256": "19dc280cc040490cd3af1c24d076a1a2325cd1b3912e52fd3249c6947bc27433",
+  "engines": {
+    "pycolmap": "4.2.1",
+    "brush": "0.3.0"
+  },
+  "settings": {
+    "totalSteps": 3000,
+    "maxResolution": 960,
+    "maxSplats": 300000,
+    "exportEvery": 1000,
+    "lpipsLossWeight": 0,
+    "normalizedMaxResolution": 1600
+  },
+  "warnings": [
+    "14 photos look very similar. Move sideways between views to add depth."
+  ],
+  "resultValidated": true,
+  "initialVisualInspection": "Recognizable room rendered from a recovered camera; scattered splats and soft edges visible",
+  "realRoomTested": false,
+  "networkMethod": "Worker and native children launched under macOS sandbox-exec profile (version 1)(allow default)(deny network*)"
+}

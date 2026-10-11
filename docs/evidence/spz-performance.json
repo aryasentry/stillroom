@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-11T05:55:18.116Z",
+  "projectId": "ba1e6fb3-cec5-487f-a201-9c128dc410fb",
+  "synthetic": true,
+  "asset": {
+    "name": "synthetic-room.spz",
+    "kind": "spz",
+    "bytes": 62609,
+    "sha256": "63c3a5208a0188015b1879db7a477ba6c2eca671622e2928df4bf69ebb74b8e0"
+  },
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+  "width": 818,
+  "height": 791,
+  "pixelRatio": 1,
+  "loadMs": 265.2000000476837,
+  "frameTimeMedianMs": 16.699999999999818,
+  "frameTimeP95Ms": 33.099999999999454,
+  "frames": 399,
+  "triangles": 0,
+  "splats": 25036,
+  "geometries": 14,
+  "textures": 8
+}

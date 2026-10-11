@@ -1,0 +1,70 @@
+{
+  "synthetic": true,
+  "licence": "CC0-1.0",
+  "source": "Procedurally authored by scripts/generate_demo.py; not a real scan",
+  "dimensionsMetres": {
+    "width": 6,
+    "depth": 5,
+    "height": 3
+  },
+  "floorY": 0,
+  "entrance": {
+    "position": [
+      0,
+      1.65,
+      2
+    ],
+    "quaternion": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "referenceDistances": [
+    {
+      "a": [
+        -3,
+        0,
+        -2.5
+      ],
+      "b": [
+        3,
+        0,
+        -2.5
+      ],
+      "metres": 6
+    },
+    {
+      "a": [
+        -3,
+        0,
+        -2.5
+      ],
+      "b": [
+        -3,
+        0,
+        2.5
+      ],
+      "metres": 5
+    }
+  ],
+  "anchors": {
+    "desk": [
+      -1.7,
+      0.845,
+      -1.5
+    ],
+    "window": [
+      2.9,
+      1.15,
+      -0.75
+    ],
+    "shelf": [
+      -2.51,
+      1.5,
+      0.95
+    ]
+  },
+  "splats": 25036
+}

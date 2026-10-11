@@ -1,0 +1,14 @@
+{
+  "fixture": "capture-room-video.mp4",
+  "inputSha256": "6b7c26dfff97effc7a269b69231ce81a1aa168dfe68c8a824b354b08eb43a9a5",
+  "decoderVersion": "18.1.0",
+  "osNetworkDenied": true,
+  "exitCode": 0,
+  "elapsedSeconds": 1.127,
+  "decodedFrames": 324,
+  "selectedFrames": 54,
+  "durationSeconds": 26.916667,
+  "warnings": [
+    "Skipped 26 almost-identical views. Moving the camera through the room supplies depth information."
+  ]
+}

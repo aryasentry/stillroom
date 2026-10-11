@@ -1,0 +1,25 @@
+{
+  "switches": 4,
+  "oldContextsLost": true,
+  "rendererCounts": [
+    {
+      "geometries": 1,
+      "textures": 6
+    },
+    {
+      "geometries": 1,
+      "textures": 6
+    },
+    {
+      "geometries": 1,
+      "textures": 6
+    },
+    {
+      "geometries": 1,
+      "textures": 6
+    }
+  ],
+  "idleFrames": 2,
+  "contextLossRestored": true,
+  "consoleErrors": []
+}

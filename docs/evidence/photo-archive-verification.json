@@ -1,0 +1,19 @@
+{
+  "archive": "fixtures/stillroom-photo-demo.zip",
+  "bytes": 19957349,
+  "sha256": "d57555f41036df3a5de58d09da46c1d2be5290dcc7b0efdcdb8634bc7b825a3c",
+  "captureOriginals": 54,
+  "assetCount": 109,
+  "memoryCount": 1,
+  "splats": 30557,
+  "scanSha256": "92276d51b69ff748411261e82abf8773d2965078ab8b9ad9248bfff0fb1f526b",
+  "allAssetChecksumsValid": true,
+  "importedIntoSeparateStore": true,
+  "importGetsNewProjectId": true,
+  "sourceAnchorPreserved": true,
+  "sourceCameraPreserved": true,
+  "displayTransformPreserved": true,
+  "reconstructionProvenancePreserved": true,
+  "synthetic": true,
+  "savedNotePreserved": true
+}

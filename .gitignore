@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.stillroom/
+test-results/
+playwright-report/
+.DS_Store
+*.log
+
+.env
+.env.local
+*.tsbuildinfo
+.tools/
+.superpowers/
+
+# Local working material and additional secret-file variants
+.env.*
+!.env.example
+docs/superpowers/
+target/
+*.sqlite3
+*.sqlite3-*

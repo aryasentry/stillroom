@@ -1,0 +1,417 @@
+{
+  "interactionCheckSeconds": 1.067,
+  "jobElapsedSeconds": 586.829,
+  "resumedAcceptedNativeResult": true,
+  "projectId": "18533986-a8d4-4da8-9235-822fb882a701",
+  "job": {
+    "id": "98295770-70f5-4486-b17b-b67614e14787",
+    "projectId": "18533986-a8d4-4da8-9235-822fb882a701",
+    "status": "accepted",
+    "stage": "complete",
+    "message": "Reconstruction accepted. Set the floor, entrance and scale; review existing memory anchors.",
+    "createdAt": "2026-10-11T04:32:11.924198Z",
+    "updatedAt": "2026-10-11T04:41:58.753693Z",
+    "quality": "preview",
+    "sourceAssetIds": [
+      "2936a22b-abc0-465d-8e1c-e698579b7024",
+      "d31d247b-ae82-4f2b-96d1-b5ae739a6916",
+      "22fedbb2-10d0-493a-967e-0ed13bec592b",
+      "cde9e76d-9ca1-4d65-9f86-49e55d35c11e",
+      "eaf4a73f-d735-4cc5-a498-f42368899cea",
+      "268e3376-18a3-43b1-a17c-d17961436c65",
+      "835dcd33-c987-45bc-a4e7-c2e4c26c3b82",
+      "a19c29e3-ecdd-40fa-9416-02b484302971",
+      "2cd89c19-e02b-40a6-a258-6bbe614362e1",
+      "0b86d564-ccc5-4298-99d1-f4da4ca3c519",
+      "0e0e7e52-6b8b-45db-a47a-ee185271a5b3",
+      "7c34ca96-40bf-4f01-9f2b-4f43fb1e881e",
+      "8e886e57-1652-4635-bd8a-e1692fb7b3dd",
+      "225b6ea9-7883-4ac0-bada-d473fc87755b",
+      "fc437337-09c4-4ea3-af11-1ce721ee7673",
+      "154bfa4e-4b5e-483d-8c0d-17b8a5d9412d",
+      "98bee80c-280f-40e9-976e-fb1371db1889",
+      "a368a077-d74e-467d-934f-f88fb74ba368",
+      "e00af934-2e43-4d2c-94f8-11a069defb54",
+      "38177246-6c80-4d31-ac3c-3b295f893e21",
+      "a438626b-947b-4ea7-9bbe-5ad9c1d42ba9",
+      "53456c20-9dca-444c-aa08-8fb50216f2c8",
+      "97630a90-52f8-4a12-a507-3b6796ffbd88",
+      "662c5fc5-08f4-4737-83f6-81c7a04b6018",
+      "d6e65449-5bfc-4f69-924c-cd2f8bb1ac96",
+      "9add5447-b62d-4d5f-b9d8-b1476ec65a2f",
+      "5d5b75f2-9686-4f50-83f3-e2fc5b462071",
+      "0e968410-a08a-4d72-a16f-be8043aa8c26",
+      "de952891-d567-4f1e-84a9-11d8c8897d1e",
+      "7cd5b07c-f736-41e5-a8b1-4e9f0e84059e",
+      "3c95ab74-3cbd-4d4d-ad58-0da08c207603",
+      "ab2e6ed4-c228-46f7-81e9-f307317fcc62",
+      "8212e721-bce9-4b01-8bf5-7446e2b6c8aa",
+      "5e040e26-2c3b-414d-8dfc-56805280f1c3",
+      "5af66e10-dfc0-4163-89fa-ba296ba86d2e",
+      "3deec8c8-eb4c-4974-a754-d4b930522151",
+      "3a6a53dd-2a40-40c8-9a6e-541757f5f21f",
+      "423a674e-7088-465c-af09-ee8c4a128ae1",
+      "456d514f-544a-4312-a173-1275c1875776",
+      "d0bb835e-33d6-4727-a438-b3de0e30d002",
+      "0161c4cc-1584-49c3-8a91-ff03cf7b4b68",
+      "7ef78a55-abe0-4f8a-993d-43b3dc918bd8",
+      "5472122a-699e-485d-a679-56d342f2b443",
+      "95ed5acf-2017-4333-8795-63082c7ae80b",
+      "315eec00-dc2b-4e2e-aa94-afc1ec8e7d13",
+      "76ee99d5-1d5a-4b5c-9d33-fb18657277d0",
+      "161b5c35-4143-4d64-ac83-64be52f0c3db",
+      "82ea98a8-3a41-416f-a3bc-f9f27a521a59",
+      "2c7ee4dd-f744-4a76-9fae-f1476396d3b6",
+      "3ecef625-82af-4cd2-bac4-0674fb720f24",
+      "f668f73b-c3e8-4713-b760-c30d1e0085d5",
+      "3efd28d1-7811-4bfa-ac06-a479417bcc4d",
+      "708182ae-7789-4e5a-9ca8-f0591818fa3d",
+      "827042d6-3444-4a98-b166-83dc01bcaa6a"
+    ],
+    "totalPhotos": 54,
+    "registeredPhotos": 54,
+    "unregisteredAssetIds": [],
+    "components": [
+      54
+    ],
+    "resultAssetId": "e2081f0f-c9f1-4641-8c1c-ab9bb24654ba",
+    "warnings": [
+      "14 photos look very similar. Move sideways between views to add depth."
+    ],
+    "error": null,
+    "iteration": 2000,
+    "totalIterations": 3000
+  },
+  "scan": {
+    "id": "e2081f0f-c9f1-4641-8c1c-ab9bb24654ba",
+    "originalName": "reconstructed-room.ply",
+    "role": "scan",
+    "kind": "ply",
+    "mimeType": "application/octet-stream",
+    "size": 7213002,
+    "sha256": "92276d51b69ff748411261e82abf8773d2965078ab8b9ad9248bfff0fb1f526b",
+    "path": "e2081f0f-c9f1-4641-8c1c-ab9bb24654ba.ply",
+    "createdAt": "2026-10-11T04:41:54.543410Z",
+    "metadata": {
+      "splats": 30557,
+      "shDegree": 3,
+      "reconstruction": {
+        "type": "photogrammetry-gaussian",
+        "sourceImages": [
+          {
+            "assetId": "2936a22b-abc0-465d-8e1c-e698579b7024",
+            "sha256": "545c781ace3b96df4f1d5e08350e4f570b79ffccd904786c3c43a65a42fe6ca8"
+          },
+          {
+            "assetId": "d31d247b-ae82-4f2b-96d1-b5ae739a6916",
+            "sha256": "6e46ac405cc6ee2b06df6dfbe3b97238c94a727a7bac954ad968d8b65bf1801e"
+          },
+          {
+            "assetId": "22fedbb2-10d0-493a-967e-0ed13bec592b",
+            "sha256": "b1f36e4c61861810139711b7f8140c8e6252b3edf410b265c81e91c1b49c45bd"
+          },
+          {
+            "assetId": "cde9e76d-9ca1-4d65-9f86-49e55d35c11e",
+            "sha256": "78479ed3e977517e85b43c015d61cfffc990f78c6fbd838be2a2639cda2ce8da"
+          },
+          {
+            "assetId": "eaf4a73f-d735-4cc5-a498-f42368899cea",
+            "sha256": "0a1eeac73959c8f622964044b706549b39eb5c277ef0647645399aa951b7be69"
+          },
+          {
+            "assetId": "268e3376-18a3-43b1-a17c-d17961436c65",
+            "sha256": "7e9e6bb1b6703052ed269eebdd7825ab3b5a1298e9d1e86bef78ecfdf238f9a0"
+          },
+          {
+            "assetId": "835dcd33-c987-45bc-a4e7-c2e4c26c3b82",
+            "sha256": "c75f19b6ef2b26b59f29d6cf09b52c03272abbd4f922a16ea3254266a5eef147"
+          },
+          {
+            "assetId": "a19c29e3-ecdd-40fa-9416-02b484302971",
+            "sha256": "91c131ad4be8deed5c0a98618775b584eee020b199bb2fdd2cc35810b715cf3a"
+          },
+          {
+            "assetId": "2cd89c19-e02b-40a6-a258-6bbe614362e1",
+            "sha256": "8302520bf83f31634fc73156872912fa268b4d4177aad286c072fc27feee52ba"
+          },
+          {
+            "assetId": "0b86d564-ccc5-4298-99d1-f4da4ca3c519",
+            "sha256": "43865319117857d7026a40897ce72264f762ce820f402a3ff52475960a56f1b1"
+          },
+          {
+            "assetId": "0e0e7e52-6b8b-45db-a47a-ee185271a5b3",
+            "sha256": "d70fef5a2d8b6dc9a7994700cec63bb899911c13323d8b5e343845f0e1fd6fa6"
+          },
+          {
+            "assetId": "7c34ca96-40bf-4f01-9f2b-4f43fb1e881e",
+            "sha256": "86dfe5e2e4933747e55fd74d0c318fb99541f589c54c1eb8bbfdc3109c0b8343"
+          },
+          {
+            "assetId": "8e886e57-1652-4635-bd8a-e1692fb7b3dd",
+            "sha256": "45d3c79955d3a894393d6e1cd97df30784d260b4bc683f6ba2ce1adf2b5bd5ad"
+          },
+          {
+            "assetId": "225b6ea9-7883-4ac0-bada-d473fc87755b",
+            "sha256": "b1bc247dbfd94b6c84cda0d9d1da2db9a32661deea5f296fce32274486769731"
+          },
+          {
+            "assetId": "fc437337-09c4-4ea3-af11-1ce721ee7673",
+            "sha256": "f371d9f73b6bf5400908e7ebc33b2537877fc1ba449bce25a43360b323313ec2"
+          },
+          {
+            "assetId": "154bfa4e-4b5e-483d-8c0d-17b8a5d9412d",
+            "sha256": "1934c7a037026d81192dbc985fdd288fe3150eb535e73a1175a8d8e67fc21cd0"
+          },
+          {
+            "assetId": "98bee80c-280f-40e9-976e-fb1371db1889",
+            "sha256": "ebb4b024421728f0208c5aeef63b66b5eec2beaa8c24cf4387562d015eee309f"
+          },
+          {
+            "assetId": "a368a077-d74e-467d-934f-f88fb74ba368",
+            "sha256": "dec0acd1e1a52b969eeffc179ee5374c105891bd02278be096e8937a3d9dd3a6"
+          },
+          {
+            "assetId": "e00af934-2e43-4d2c-94f8-11a069defb54",
+            "sha256": "06663b8c2b7b4219376bf269d7ce6bff3ff45626b67e688f047d661ca46844c0"
+          },
+          {
+            "assetId": "38177246-6c80-4d31-ac3c-3b295f893e21",
+            "sha256": "582412b8c9d46f2520bf8d007ee8308dce4121d00e5a8f4ce1c7524eee9162a1"
+          },
+          {
+            "assetId": "a438626b-947b-4ea7-9bbe-5ad9c1d42ba9",
+            "sha256": "a39b934aeada16e5c3b53af1133d293ce0274638bb21e2f40acbfa286d408ea3"
+          },
+          {
+            "assetId": "53456c20-9dca-444c-aa08-8fb50216f2c8",
+            "sha256": "dc78ea16ab2d7cf06fbd62a878abd23e5ae77c5d11f913ffc17891511cb22cb3"
+          },
+          {
+            "assetId": "97630a90-52f8-4a12-a507-3b6796ffbd88",
+            "sha256": "237c4f20c8ffc9ff94c78d8bd5b89f69a54a2f3a394357a6b39d5465c3a6eaf6"
+          },
+          {
+            "assetId": "662c5fc5-08f4-4737-83f6-81c7a04b6018",
+            "sha256": "cdfb1ac6661bc0f1da7e0e710666bb60bba51ba5c20744b9f9b12e92242c9a44"
+          },
+          {
+            "assetId": "d6e65449-5bfc-4f69-924c-cd2f8bb1ac96",
+            "sha256": "1d5fa0e1445783302f4266f4ed45a4fa327f421c4c5c003637954b7538dd90fd"
+          },
+          {
+            "assetId": "9add5447-b62d-4d5f-b9d8-b1476ec65a2f",
+            "sha256": "ad09ad931ee462454a40574c4e76d6fd5bd542f220b8888c4398d432f52e0a97"
+          },
+          {
+            "assetId": "5d5b75f2-9686-4f50-83f3-e2fc5b462071",
+            "sha256": "fd62ff0ac2bd938834d7df53050cc79770b14dc44dcec51b1e8a74feb6a4954a"
+          },
+          {
+            "assetId": "0e968410-a08a-4d72-a16f-be8043aa8c26",
+            "sha256": "ccc3145312524d1b9f531ee569b495b977fa90f39cecd5d78fe4a6abf511ddbf"
+          },
+          {
+            "assetId": "de952891-d567-4f1e-84a9-11d8c8897d1e",
+            "sha256": "d628b2da263e5a89428df809dd68efac62282155c620eadde35218373c3ffe71"
+          },
+          {
+            "assetId": "7cd5b07c-f736-41e5-a8b1-4e9f0e84059e",
+            "sha256": "33881ab8b5d581d87b5987241919185d9ec1ad0f290dd5cb552366881b8c0925"
+          },
+          {
+            "assetId": "3c95ab74-3cbd-4d4d-ad58-0da08c207603",
+            "sha256": "f21d9b77b3bd952af552c4409d553d299c170167e7989aa448da95ad7795feb1"
+          },
+          {
+            "assetId": "ab2e6ed4-c228-46f7-81e9-f307317fcc62",
+            "sha256": "124d3895a0926e828b27c36209f14cdbfb2d43e24d0faa42bf955018cd40edef"
+          },
+          {
+            "assetId": "8212e721-bce9-4b01-8bf5-7446e2b6c8aa",
+            "sha256": "252a742a84ce4f31963e70e5e2f51d78d9371373ee8b4efc0db9ee05135920d5"
+          },
+          {
+            "assetId": "5e040e26-2c3b-414d-8dfc-56805280f1c3",
+            "sha256": "0ae82aac4ab01c551d96c850eaa09176d3c7bac2578b62dfefc9e3c9d2dfa3a8"
+          },
+          {
+            "assetId": "5af66e10-dfc0-4163-89fa-ba296ba86d2e",
+            "sha256": "dbd4d2a31ef64f1bb30d4b73b6784622fe3e64dad5caf797409aefbd90d71de0"
+          },
+          {
+            "assetId": "3deec8c8-eb4c-4974-a754-d4b930522151",
+            "sha256": "0c9140b92e988c461b86e3bf65ebfbc8a760996da3bb444ac72d8b216f866e4e"
+          },
+          {
+            "assetId": "3a6a53dd-2a40-40c8-9a6e-541757f5f21f",
+            "sha256": "713c866a4b0472be2c5891d3b839c72b5f76faa93590d1d5c1d5dc99c217b3d2"
+          },
+          {
+            "assetId": "423a674e-7088-465c-af09-ee8c4a128ae1",
+            "sha256": "2a5a5e462cd3164140dfc7f065dab40bde36c63b44afd2c64930ee5fbe637fc0"
+          },
+          {
+            "assetId": "456d514f-544a-4312-a173-1275c1875776",
+            "sha256": "684500234ef3c034c96ecbce2ebbc1936fd967442b7dcf89ce837797ad05360f"
+          },
+          {
+            "assetId": "d0bb835e-33d6-4727-a438-b3de0e30d002",
+            "sha256": "a2183b7e6413f21a361ed1cda8f9a8b682cd8e240bcc1b6d82ed3a0cb8c4d36e"
+          },
+          {
+            "assetId": "0161c4cc-1584-49c3-8a91-ff03cf7b4b68",
+            "sha256": "69a4257a5aed01be913945046d61585a1c7cd58c36cd8461a64cc16b99d08bcd"
+          },
+          {
+            "assetId": "7ef78a55-abe0-4f8a-993d-43b3dc918bd8",
+            "sha256": "0f148613fc0f0b7a98bdd5b602f32133e7b3bbb2eebe2fbdbccc184bda859bf6"
+          },
+          {
+            "assetId": "5472122a-699e-485d-a679-56d342f2b443",
+            "sha256": "4c8ac0983aea06f7085d6071e7326bf3284fc6c8c18e7df31d15ee00bd64134d"
+          },
+          {
+            "assetId": "95ed5acf-2017-4333-8795-63082c7ae80b",
+            "sha256": "98d1d9da6e57b133f4a4d66c5b728a3a958aeb1bac91b50631832b66024f7405"
+          },
+          {
+            "assetId": "315eec00-dc2b-4e2e-aa94-afc1ec8e7d13",
+            "sha256": "f90c3ea0ee0a662f1ba40dd67439cd800f5a69e77589f4d7ed3b2ff2daaad00f"
+          },
+          {
+            "assetId": "76ee99d5-1d5a-4b5c-9d33-fb18657277d0",
+            "sha256": "ae720e0fdf4d9fcbc5ee2796efffaee5791a1962032eb0f2265c406bc402c998"
+          },
+          {
+            "assetId": "161b5c35-4143-4d64-ac83-64be52f0c3db",
+            "sha256": "a3a822d5e39c034eb2f79aa98e92c7ad989e8f555d7a4024a059135ba8054123"
+          },
+          {
+            "assetId": "82ea98a8-3a41-416f-a3bc-f9f27a521a59",
+            "sha256": "39f2703a6ba7372afb579d5d1ad751df8a96a8275853c36b3698f47969b92c44"
+          },
+          {
+            "assetId": "2c7ee4dd-f744-4a76-9fae-f1476396d3b6",
+            "sha256": "4a58c520c15f19fcffed07553208fc2c82384b1d1f20044a079f71a2d63994de"
+          },
+          {
+            "assetId": "3ecef625-82af-4cd2-bac4-0674fb720f24",
+            "sha256": "6e89d3718ca92e67b3519959ea5366fcc723d26d353621f5d190c22542545a69"
+          },
+          {
+            "assetId": "f668f73b-c3e8-4713-b760-c30d1e0085d5",
+            "sha256": "0142e22e4268cbfab638291a1ecb1fda9f78872ec1230c54b254ca00c5939dfe"
+          },
+          {
+            "assetId": "3efd28d1-7811-4bfa-ac06-a479417bcc4d",
+            "sha256": "bb1e0ed64c8b0584fb84af6140015e71590a0a01e524539988deb59a1df6cf3f"
+          },
+          {
+            "assetId": "708182ae-7789-4e5a-9ca8-f0591818fa3d",
+            "sha256": "43beae327c694e6655c526a65d3eceebd233e9cb503a151c39d03588e375e111"
+          },
+          {
+            "assetId": "827042d6-3444-4a98-b166-83dc01bcaa6a",
+            "sha256": "7996b51c20e55deebd14427dcafd27a49dd8003278e5ac3e46fd5b521f92632a"
+          }
+        ],
+        "quality": "preview",
+        "versions": {
+          "pycolmap": "4.2.1",
+          "brush": "0.3.0"
+        },
+        "settings": {
+          "totalSteps": 3000,
+          "maxResolution": 960,
+          "maxSplats": 300000,
+          "exportEvery": 1000,
+          "lpipsLossWeight": 0,
+          "normalizedMaxResolution": 1600
+        },
+        "registeredAssetIds": [
+          "2936a22b-abc0-465d-8e1c-e698579b7024",
+          "d31d247b-ae82-4f2b-96d1-b5ae739a6916",
+          "22fedbb2-10d0-493a-967e-0ed13bec592b",
+          "cde9e76d-9ca1-4d65-9f86-49e55d35c11e",
+          "eaf4a73f-d735-4cc5-a498-f42368899cea",
+          "268e3376-18a3-43b1-a17c-d17961436c65",
+          "835dcd33-c987-45bc-a4e7-c2e4c26c3b82",
+          "a19c29e3-ecdd-40fa-9416-02b484302971",
+          "2cd89c19-e02b-40a6-a258-6bbe614362e1",
+          "0b86d564-ccc5-4298-99d1-f4da4ca3c519",
+          "0e0e7e52-6b8b-45db-a47a-ee185271a5b3",
+          "7c34ca96-40bf-4f01-9f2b-4f43fb1e881e",
+          "8e886e57-1652-4635-bd8a-e1692fb7b3dd",
+          "225b6ea9-7883-4ac0-bada-d473fc87755b",
+          "fc437337-09c4-4ea3-af11-1ce721ee7673",
+          "154bfa4e-4b5e-483d-8c0d-17b8a5d9412d",
+          "98bee80c-280f-40e9-976e-fb1371db1889",
+          "a368a077-d74e-467d-934f-f88fb74ba368",
+          "e00af934-2e43-4d2c-94f8-11a069defb54",
+          "38177246-6c80-4d31-ac3c-3b295f893e21",
+          "a438626b-947b-4ea7-9bbe-5ad9c1d42ba9",
+          "53456c20-9dca-444c-aa08-8fb50216f2c8",
+          "97630a90-52f8-4a12-a507-3b6796ffbd88",
+          "662c5fc5-08f4-4737-83f6-81c7a04b6018",
+          "d6e65449-5bfc-4f69-924c-cd2f8bb1ac96",
+          "9add5447-b62d-4d5f-b9d8-b1476ec65a2f",
+          "5d5b75f2-9686-4f50-83f3-e2fc5b462071",
+          "0e968410-a08a-4d72-a16f-be8043aa8c26",
+          "de952891-d567-4f1e-84a9-11d8c8897d1e",
+          "7cd5b07c-f736-41e5-a8b1-4e9f0e84059e",
+          "3c95ab74-3cbd-4d4d-ad58-0da08c207603",
+          "ab2e6ed4-c228-46f7-81e9-f307317fcc62",
+          "8212e721-bce9-4b01-8bf5-7446e2b6c8aa",
+          "5e040e26-2c3b-414d-8dfc-56805280f1c3",
+          "5af66e10-dfc0-4163-89fa-ba296ba86d2e",
+          "3deec8c8-eb4c-4974-a754-d4b930522151",
+          "3a6a53dd-2a40-40c8-9a6e-541757f5f21f",
+          "423a674e-7088-465c-af09-ee8c4a128ae1",
+          "456d514f-544a-4312-a173-1275c1875776",
+          "d0bb835e-33d6-4727-a438-b3de0e30d002",
+          "0161c4cc-1584-49c3-8a91-ff03cf7b4b68",
+          "7ef78a55-abe0-4f8a-993d-43b3dc918bd8",
+          "5472122a-699e-485d-a679-56d342f2b443",
+          "95ed5acf-2017-4333-8795-63082c7ae80b",
+          "315eec00-dc2b-4e2e-aa94-afc1ec8e7d13",
+          "76ee99d5-1d5a-4b5c-9d33-fb18657277d0",
+          "161b5c35-4143-4d64-ac83-64be52f0c3db",
+          "82ea98a8-3a41-416f-a3bc-f9f27a521a59",
+          "2c7ee4dd-f744-4a76-9fae-f1476396d3b6",
+          "3ecef625-82af-4cd2-bac4-0674fb720f24",
+          "f668f73b-c3e8-4713-b760-c30d1e0085d5",
+          "3efd28d1-7811-4bfa-ac06-a479417bcc4d",
+          "708182ae-7789-4e5a-9ca8-f0591818fa3d",
+          "827042d6-3444-4a98-b166-83dc01bcaa6a"
+        ],
+        "warnings": [
+          "14 photos look very similar. Move sideways between views to add depth."
+        ],
+        "initialView": {
+          "position": [
+            -0.34348694041461164,
+            0.03158396870088171,
+            -0.4709138943334631
+          ],
+          "quaternion": [
+            0.9991389592104746,
+            -0.02084055131411715,
+            -0.019290529230776423,
+            0.03024710053426654
+          ]
+        },
+        "displayRotation": [
+          -2.8789608716914468,
+          1.3616264373612905,
+          -0.21315419578198008
+        ]
+      }
+    },
+    "thumbnailId": null
+  },
+  "memoryPersisted": true,
+  "browserExternalRequests": [],
+  "browserErrors": [],
+  "fixture": "Synthetic 54-photo rendered room; no ground-truth cameras or geometry passed to reconstruction",
+  "liveRealRoomTested": false
+}

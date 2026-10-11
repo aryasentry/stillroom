@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-11T05:55:08.705Z",
+  "projectId": "426372a4-b4a9-48f4-904d-c748e30202f4",
+  "synthetic": true,
+  "asset": {
+    "name": "synthetic-room.ply",
+    "kind": "ply",
+    "bytes": 1402426,
+    "sha256": "61151e85b90fa6b2733b6f4e5e3a84365c84c3d6e6e45913b54a9b14552065fb"
+  },
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+  "width": 818,
+  "height": 791,
+  "pixelRatio": 1,
+  "loadMs": 671.5,
+  "frameTimeMedianMs": 16.699999999999818,
+  "frameTimeP95Ms": 49.100000000000364,
+  "frames": 355,
+  "triangles": 0,
+  "splats": 25036,
+  "geometries": 14,
+  "textures": 8
+}

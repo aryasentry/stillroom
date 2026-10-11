@@ -1,0 +1,1 @@
+{"name":"stillroom-workspace","private":true,"scripts":{"dev":"npm --prefix frontend run dev","build":"npm --prefix frontend run build","test":"npm --prefix frontend test","start":"python3 run.py"}}

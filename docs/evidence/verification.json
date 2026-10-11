@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-11",
+  "backendTests": {
+    "passed": 232,
+    "command": ".venv/bin/python -m pytest backend/tests -q"
+  },
+  "frontendTests": {
+    "passed": 37,
+    "command": "npm test --prefix frontend"
+  },
+  "browserTests": {
+    "passed": 17,
+    "skipped": 2,
+    "scope": "Final ordinary full suite, including partial-result review, accepted-room original video playback, frame extraction, core room editing and archives. The two opt-in long synthetic GPU tests retain prior evidence; a separate fresh private-room Standard run verifies the new native quality path.",
+    "command": "STILLROOM_BROWSER_CHANNEL=chrome npm --prefix frontend run test:e2e",
+    "durationMinutes": 1.9
+  },
+  "productionBuild": "passed",
+  "preflight": "passed",
+  "npmAuditKnownVulnerabilities": 0,
+  "warnings": [
+    "Starlette TestClient deprecates its httpx adapter",
+    "Vite reports large Three.js and Spark bundles"
+  ],
+  "platform": "macOS / Apple M3",
+  "realScanTested": true,
+  "windowsRuntimeTested": false,
+  "liveOpenRouterTested": false,
+  "defaultAiModel": "inclusionai/ling-3.1-flash",
+  "modelPricingCheckedAt": "2026-10-11",
+  "zeroPriceProviderCaps": true,
+  "nativePhotoReconstruction": {
+    "sourcePhotos": 54,
+    "registeredPhotos": 54,
+    "osNetworkDeniedTrialPassed": true,
+    "browserPreviewAccepted": true,
+    "memoryPersisted": true,
+    "portableArchiveImportedAndValidated": true,
+    "browserOutputSplats": 30557,
+    "realRoomTested": false
+  },
+  "pipCheck": "passed",
+  "priorPhotoBrowserTests": {
+    "passed": 13,
+    "scope": "Unique browser workflows verified across the full native run and targeted reruns after test selector corrections. The native memory rerun uses the actual accepted generated result.",
+    "command": "STILLROOM_BROWSER_CHANNEL=chrome STILLROOM_TEST_NATIVE_RECONSTRUCTION=1 npm run test:e2e --prefix frontend",
+    "fullRun": {
+      "passed": 11,
+      "selectorFailuresCorrected": 2
+    },
+    "targetedRerun": {
+      "passed": 2,
+      "durationSeconds": 13.7
+    },
+    "reopenedNativeRenderCheck": {
+      "passed": 1,
+      "durationSeconds": 2.6,
+      "visibleMarkerAndLoadedScene": true
+    }
+  },
+  "nativeVideoReconstruction": {
+    "sourceVideo": "capture-room-video.mp4",
+    "sourceSeconds": 27,
+    "extractedFrames": 54,
+    "registeredFrames": 54,
+    "outputSplats": 31087,
+    "endToEndSeconds": 202.875,
+    "osNetworkDeniedExtractionPassed": true,
+    "browserPreviewAccepted": true,
+    "portableArchiveImportedAndValidated": true,
+    "realRoomTested": false
+  },
+  "priorVideoBrowserTests": {
+    "passed": 17,
+    "skipped": 1,
+    "scope": "One full run: all ordinary browser workflows plus actual video extraction and native GPU reconstruction/preview/acceptance/export. Prior full photo native test was skipped in this run and has separate prior evidence.",
+    "command": "STILLROOM_BROWSER_CHANNEL=chrome STILLROOM_TEST_NATIVE_VIDEO=1 npm --prefix frontend run test:e2e",
+    "durationMinutes": 4.2
+  },
+  "realRoomQualityVerification": {
+    "status": "completed and visually inspected in app",
+    "independentMeasurements": false,
+    "privateMediaPublished": false,
+    "baselineRegisteredFrames": 48,
+    "inputFrames": 120,
+    "isolatedSharedCameraRegisteredFrames": 108,
+    "isolatedGuidedRegisteredFrames": 120,
+    "productionRegisteredFrames": 120,
+    "productionSparsePoints": 7131,
+    "meanReprojectionErrorPixels": 1.14455,
+    "trainingSteps": 7000,
+    "endToEndSeconds": 462.098,
+    "rawSplats": 76141,
+    "removedSplats": 1514,
+    "outputSplats": 74627,
+    "outputBytes": 17613522,
+    "guidedMatching": true,
+    "cameraCalibration": "shared-video",
+    "multiDirectionPreviewInspected": true,
+    "originalMp4PlaybackVerified": true,
+    "previewAccepted": false,
+    "remainingLimitations": [
+      "Soft edges and some stretched artifacts remain",
+      "Static reconstruction does not preserve moving people or faces reliably",
+      "Matched frames do not prove complete physical room geometry"
+    ]
+  }
+}

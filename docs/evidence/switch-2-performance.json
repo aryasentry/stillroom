@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-11T05:55:40.354Z",
+  "projectId": "f5cbd8e6-aaff-4074-bac3-70475347fd8f",
+  "synthetic": true,
+  "asset": {
+    "name": "synthetic-room.glb",
+    "kind": "glb",
+    "bytes": 252908,
+    "sha256": "eadf407277a464bd714526428dc3d87c75f329218e765653565b95908a5db506"
+  },
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+  "width": 818,
+  "height": 791,
+  "pixelRatio": 1,
+  "loadMs": 58.700000047683716,
+  "frameTimeMedianMs": 0,
+  "frameTimeP95Ms": 0,
+  "frames": 3,
+  "triangles": 3888,
+  "splats": 0,
+  "geometries": 1,
+  "textures": 6
+}

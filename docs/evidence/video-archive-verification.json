@@ -1,0 +1,13 @@
+{
+  "archive": "stillroom-video-demo.zip",
+  "archiveBytes": 25904004,
+  "archiveSha256": "abf80425bfac7a0e177f4dbbc5d954f0e91c56c6f53bbdd164dbc33bcee2a695",
+  "assets": 110,
+  "sourceVideos": 1,
+  "extractedFrames": 54,
+  "splats": 31087,
+  "allChecksumsValid": true,
+  "timestampsAndSourceHashesPreserved": true,
+  "recoveredViewPreserved": true,
+  "importedIntoSeparateStore": true
+}

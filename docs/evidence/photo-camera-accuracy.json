@@ -1,0 +1,14 @@
+{
+  "fixture": "CC0 synthetic rendered room fragment with rich texture and fixed lighting",
+  "images": 54,
+  "registeredImages": 54,
+  "sparsePoints": 19634,
+  "meanReprojectionErrorPixels": 0.29970195360818547,
+  "cameraPositionAfterSimilarityAlignment": {
+    "rmseMetres": 0.0004275576777871762,
+    "maxMetres": 0.0010925775674888662,
+    "alignment": "Least-squares scale+rotation+translation fitted using all54knowncamera positions after reconstruction only; not an independent real-world scale test"
+  },
+  "groundTruthSuppliedToEngine": false,
+  "realRoomTested": false
+}

@@ -1,0 +1,6 @@
+{
+  "externalRequests": [],
+  "consoleErrors": [],
+  "method": "Browser route denies every non-loopback HTTP(S) request; complete mesh/media/save/search/archive workflow executed",
+  "os": "darwin"
+}
