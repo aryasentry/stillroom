@@ -8,6 +8,12 @@ A local room-memory app: create a visual 3D room from overlapping photographs or
 
 The screenshot shows the built-in synthetic demo. Reconstructed rooms depend on capture quality; this is not a claim that every input produces the same fidelity.
 
+## Real-room viewer recording
+
+[![Watch the real-room reconstruction walkthrough](docs/videos/stillroom-sparse-walkthrough.jpg)](docs/videos/stillroom-sparse-walkthrough.mp4)
+
+[Watch the 11-second MP4](docs/videos/stillroom-sparse-walkthrough.mp4). This is a direct recording of the sparse reconstruction viewer: 32 selected frames, with 30 matched. The camera stays away from the occupied seating area; a cabinet reflection is masked, and the clip has no audio. Visible softness and distortions remain. See [recording details](docs/videos/README.md).
+
 ## Run locally
 
 Install Python **3.11–3.13** and Node.js **22.12+ or 24 LTS**. Node/npm are needed for setup and frontend development; the built app runs with Python and a WebGL-capable browser. Dependencies install inside this project. Initial setup needs internet access. Local video decoding uses the pinned PyAV 18.1.0 wheel with bundled FFmpeg libraries; a separate FFmpeg installation is not required.
