@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-11",
+  "host": "Apple M3 / macOS / Python 3.13.13",
+  "capture": "One private room recording; no source media, room images, IDs or paths included",
+  "candidateFrames": 120,
+  "selectedFrames": 32,
+  "registeredFrames": 30,
+  "inputFrameReductionPercent": 73.33,
+  "freshFeatureExtractionAndMatching": true,
+  "modelInputResolution": 336,
+  "model": "depth-anything-3.DA3-BASE",
+  "modelRevision": "f4a6c9b3c95e41c82048423d3493a81ec3fa810e",
+  "trainingSteps": 7000,
+  "elapsedSeconds": 420.4,
+  "timingCaveat": "Browser and unit checks ran concurrently; this is not a controlled speed comparison.",
+  "sparsePoints": 4028,
+  "meanReprojectionErrorPixels": 0.9778,
+  "minimumCameraObservations": 64,
+  "finalConnectivityAndSupportGuardsPreserveInputs": true,
+  "output": {
+    "splats": 51781,
+    "shDegree": 3
+  },
+  "removedOutlierSplats": 1459,
+  "archiveRoundtrip": {
+    "archiveBytes": 47932451,
+    "sourceImages": 32,
+    "registeredImages": 30,
+    "modelIdentityPreserved": true,
+    "retainedAssets": 244
+  },
+  "visualObservation": "Window, cabinet, table, doors, seating and TV wall recognizable across inspected views. Soft edges, elongated artifacts and moving-person smears remain.",
+  "dimensionalAccuracyVerified": false,
+  "unseenWorldGenerated": false
+}

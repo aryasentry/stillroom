@@ -1,5 +1,7 @@
 """Learned camera priors refined exclusively with verified image feature tracks."""
 from pathlib import Path
+from collections import Counter
+from itertools import combinations
 import math
 import numpy as np
 
@@ -27,16 +29,48 @@ def camera_prior(cameras, images, prediction):
 
 def filter_supported_model(model, min_observations=30):
     """Deregister unsupported cameras and remove nonfinite/high-error tracks."""
-    model.update_point_3d_errors()
-    for identifier,point in list(model.points3D.items()):
-        if not np.isfinite(point.xyz).all() or not math.isfinite(point.error) or point.error>4 or point.track.length()<2:
-            model.delete_point3D(identifier)
-    for identifier in list(model.reg_image_ids()):
-        image=model.images[identifier]
-        if image.num_points3D<min_observations: model.deregister_frame(image.frame_id)
-    # Deregistration can leave tracks with fewer than two remaining views.
-    for identifier,point in list(model.points3D.items()):
-        if point.track.length()<2: model.delete_point3D(identifier)
+    while True:
+        model.update_point_3d_errors()
+        bad=[identifier for identifier,point in model.points3D.items()
+             if not np.isfinite(point.xyz).all() or not math.isfinite(point.error)
+             or point.error>4 or point.track.length()<2]
+        for identifier in bad: model.delete_point3D(identifier)
+        weak=[i for i in model.reg_image_ids() if model.images[i].num_points3D<min_observations]
+        if not bad and not weak: break
+        for identifier in weak: model.deregister_frame(model.images[identifier].frame_id)
+        # Deregistration changes neighboring support and mean track error.
+        # Recompute both until the surviving geometry is stable.
+
+
+def retain_largest_component(model):
+    """Keep one group whose relative camera geometry is supported by shared tracks."""
+    while True:
+        before=(model.num_reg_images(),model.num_points3D())
+        graph={i:set() for i in model.reg_image_ids()}
+        edges=Counter()
+        for point in model.points3D.values():
+            ids={e.image_id for e in point.track.elements if e.image_id in graph}
+            edges.update(combinations(sorted(ids),2))
+        # A lone triangulated point cannot establish relative group geometry.
+        for (a,b),support in edges.items():
+            if support>=15: graph[a].add(b);graph[b].add(a)
+        remaining=set(graph);groups=[]
+        while remaining:
+            stack=[min(remaining)];group=set()
+            while stack:
+                identifier=stack.pop()
+                if identifier in group: continue
+                group.add(identifier);stack.extend(graph[identifier]-group)
+            remaining-=group
+            points=sum(any(e.image_id in group for e in p.track.elements) for p in model.points3D.values())
+            if len(group)>=3 and points>=100: groups.append((group,points))
+        groups.sort(key=lambda pair:(-len(pair[0]),-pair[1],min(pair[0])))
+        retained=groups[0][0] if groups else set()
+        for identifier in list(model.reg_image_ids()):
+            if identifier not in retained: model.deregister_frame(model.images[identifier].frame_id)
+        filter_supported_model(model)
+
+        if before==(model.num_reg_images(),model.num_points3D()): break
 
 
 def recover(database, image_dir, output, ids, prediction, threads):
@@ -58,6 +92,7 @@ def recover(database, image_dir, output, ids, prediction, threads):
     filter_supported_model(model)
     if model.num_reg_images()>=3 and model.num_points3D()>=100:
         c.bundle_adjustment(model,options=ba);filter_supported_model(model)
+    retain_largest_component(model)
     # Disk COLMAP models contain registered views only. Reload that bounded model
     # so coverage and downstream view selection cannot count rejected images.
     supported=output/'assisted-supported';supported.mkdir();model.write(supported)
